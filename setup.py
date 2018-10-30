@@ -1,6 +1,6 @@
 from setuptools import setup
 
-setup(name='monitoring_smithclent',
+setup(name='monitoring_smithclient',
       version='0.1',
       description='Monitoring Smith client',
       url='',
