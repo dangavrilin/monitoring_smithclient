@@ -20,7 +20,7 @@ class Client:
             'expected_time': self.expected_time,
         }
         try:
-            response = requests.get('{}start'.format(self.base_url), params=payload)
+            response = requests.get('{}/start'.format(self.base_url), params=payload)
             if response.status_code == 200:
                 self.id = response.json()['id']
                 print('MonitoringSmithClient: START')
@@ -36,7 +36,7 @@ class Client:
             'comment': comment
         }
         try:
-            response = requests.get('{}comment'.format(self.base_url), params=payload)
+            response = requests.get('{}/comment'.format(self.base_url), params=payload)
             if response.status_code == 200:
                 print('MonitoringSmithClient: {}'.format(comment))
         except Exception as err:
@@ -49,7 +49,7 @@ class Client:
             'comment': comment
         }
         try:
-            response = requests.get('{}comment'.format(self.base_url), params=payload)
+            response = requests.get('{}/finish'.format(self.base_url), params=payload)
             if response.status_code == 200:
                 print('MonitoringSmithClient: FINISH')
         except Exception as err:
@@ -62,7 +62,7 @@ class Client:
             'comment': comment
         }
         try:
-            response = requests.get('{}comment'.format(self.base_url), params=payload)
+            response = requests.get('{}/fail'.format(self.base_url), params=payload)
             if response.status_code == 200:
                 print('MonitoringSmithClient: FAIL')
         except Exception as err:
