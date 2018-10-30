@@ -3,7 +3,7 @@ from setuptools import setup
 setup(name='monitoring_smithclient',
       version='0.1',
       description='Monitoring Smith client',
-      url='',
+      url='https://github.com/dangavrilin/monitoring_smithclient.git',
       author='Denis Gavrilin',
       author_email='dangavrilin@gmail.com',
       license='MIT',
