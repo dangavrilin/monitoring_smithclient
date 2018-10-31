@@ -20,14 +20,14 @@ class Client:
             'expected_time': self.expected_time,
         }
         try:
-            response = requests.get('{}/start'.format(self.base_url), params=payload)
+            response = requests.get('{}start'.format(self.base_url), params=payload)
             if response.status_code == 200:
                 self.id = response.json()['id']
-                print('MonitoringSmithClient: START')
+                print('MonitoringSmithClient: start')
             else:
-                print('MonitoringSmithClient: FAIL \n{}'.format(response.json()['message']))
+                print('MonitoringSmithClient: internal problem occurred \n{}'.format(response.json()['message']))
         except Exception as err:
-            print('MonitoringSmithClient: FAIL \n{}'.format(err))
+            print('MonitoringSmithClient: internal problem occurred \n{}'.format(err))
 
     def comment(self, comment):
         payload = {
@@ -36,11 +36,11 @@ class Client:
             'comment': comment
         }
         try:
-            response = requests.get('{}/comment'.format(self.base_url), params=payload)
+            response = requests.get('{}comment'.format(self.base_url), params=payload)
             if response.status_code == 200:
                 print('MonitoringSmithClient: {}'.format(comment))
         except Exception as err:
-            print('MonitoringSmithClient: FAIL \n{}'.format(err))
+            print('MonitoringSmithClient: internal problem occurred \n{}'.format(err))
 
     def finish(self, comment):
         payload = {
@@ -49,21 +49,22 @@ class Client:
             'comment': comment
         }
         try:
-            response = requests.get('{}/finish'.format(self.base_url), params=payload)
+            response = requests.get('{}finish'.format(self.base_url), params=payload)
             if response.status_code == 200:
-                print('MonitoringSmithClient: FINISH')
-        except Exception as err:
-            print('MonitoringSmithClient: FAIL \n{}'.format(err))
 
-    def fail(self, comment):
+                print('MonitoringSmithClient: success')
+        except Exception as err:
+            print('MonitoringSmithClient: internal problem occurred \n{}'.format(err))
+
+    def fail(self, comment, external_error):
         payload = {
             'apikey': self.apikey,
             'id': self.id,
             'comment': comment
         }
         try:
-            response = requests.get('{}/fail'.format(self.base_url), params=payload)
+            response = requests.get('{}fail'.format(self.base_url), params=payload)
             if response.status_code == 200:
-                print('MonitoringSmithClient: FAIL')
+                print('MonitoringSmithClient: {}'.format(external_error))
         except Exception as err:
-            print('MonitoringSmithClient: FAIL \n{}'.format(err))
+            print('MonitoringSmithClient: internal problem occurred \n{}'.format(err))
