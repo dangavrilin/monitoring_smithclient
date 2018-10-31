@@ -1,13 +1,13 @@
 from setuptools import setup
 
-setup(name='monitoring_smithclient',
-      version='0.1',
-      description='Monitoring Smith client',
+setup(name='smithclient',
+      version='0.1.3',
+      description='Monitoring Smith smithclient',
       url='https://github.com/dangavrilin/monitoring_smithclient.git',
       author='Denis Gavrilin',
       author_email='dangavrilin@gmail.com',
       license='MIT',
-      packages=['client'],
+      packages=['smithclient'],
       install_requires=[
           'requests',
       ],

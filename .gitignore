@@ -3,4 +3,4 @@ Pipfile
 Pipfile.lock
 build
 dist
-monitoring_smithclient.egg-info
+smithclient.egg-info

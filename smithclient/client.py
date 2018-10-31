@@ -51,20 +51,19 @@ class Client:
         try:
             response = requests.get('{}finish'.format(self.base_url), params=payload)
             if response.status_code == 200:
-
-                print('MonitoringSmithClient: success')
+                print('MonitoringSmithClient: {}'.format(comment))
         except Exception as err:
             print('MonitoringSmithClient: internal problem occurred \n{}'.format(err))
 
-    def fail(self, comment, external_error):
+    def fail(self, comment, external_error=None):
         payload = {
             'apikey': self.apikey,
             'id': self.id,
-            'comment': comment
+            'comment': '{}: {}'.format(comment, external_error)
         }
         try:
             response = requests.get('{}fail'.format(self.base_url), params=payload)
             if response.status_code == 200:
-                print('MonitoringSmithClient: {}'.format(external_error))
+                print('MonitoringSmithClient: {}\n{}'.format(comment, external_error))
         except Exception as err:
             print('MonitoringSmithClient: internal problem occurred \n{}'.format(err))
